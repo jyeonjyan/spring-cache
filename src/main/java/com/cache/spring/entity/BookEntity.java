@@ -2,13 +2,10 @@ package com.cache.spring.entity;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@Getter @Setter
-@Builder
+@Entity
+@Getter @Setter @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class BookEntity {
