@@ -10,11 +10,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BookDto {
+    private String bookName;
     private String author;
     private String publisher;
 
     public BookEntity toEntity(){
         return BookEntity.builder()
+                .bookName(this.bookName)
                 .author(this.author)
                 .publisher(this.publisher)
                 .build();
