@@ -6,8 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Commit;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -15,7 +15,6 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@Commit
 @Slf4j
 class BookServiceTest {
 
@@ -25,6 +24,7 @@ class BookServiceTest {
     private BookRepository bookRepository;
 
     @Test
+    @Transactional
     public void createBooks(){
         //Given
         List<BookEntity> bookEntities = Stream.generate(
@@ -39,9 +39,11 @@ class BookServiceTest {
 
         //When
         long start = System.currentTimeMillis();
-        bookRepository.findAll();
+        List<BookEntity> all = bookRepository.findAll();
         long end = System.currentTimeMillis();
         log.info("========findAll query execution time: {}", (end-start)/1000.0);
+
+        assertEquals(all.size(), 30000);
 
     }
 }

@@ -23,10 +23,10 @@ spring:
   ### JPA 설정 ###
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
-    generate-ddl: true
     show_sql: true
     properties:
       hibernate:
+        ddl-auto: create-drop
         show_sql: true
         format_sql: true
         generate_statistics: true
