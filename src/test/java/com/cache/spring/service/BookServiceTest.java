@@ -33,7 +33,7 @@ class BookServiceTest {
                         .author("jihwan")
                         .publisher("jyeonjyan")
                         .build()
-        ).limit(30000).collect(Collectors.toList());
+        ).limit(1000).collect(Collectors.toList());
 
         bookRepository.saveAll(bookEntities);
 
@@ -43,7 +43,7 @@ class BookServiceTest {
         long end = System.currentTimeMillis();
         log.info("========findAll query execution time: {}", (end-start)/1000.0);
 
-        assertEquals(all.size(), 30000);
+        assertEquals(all.size(), 1000);
 
     }
 }
