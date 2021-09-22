@@ -26,7 +26,8 @@ spring:
     show_sql: true
     properties:
       hibernate:
-        ddl-auto: create-drop
+        hbm2ddl:
+          auto: create
         show_sql: true
         format_sql: true
         generate_statistics: true
