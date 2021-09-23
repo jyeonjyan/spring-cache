@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,8 +35,8 @@ public class BookController {
     }
 
     @ApiOperation("책 전체 조회하기 - cache 없음")
-    @GetMapping("/getAll/{name}")
-    public List<BookEntity> getAllBooks(String name){
+    @GetMapping("/getAll/nocache/{name}")
+    public List<BookEntity> getAllBooksWithCache(@PathVariable String name){
         long start = System.currentTimeMillis();
         List<BookEntity> allBook = bookService.getAllBook();
         long end = System.currentTimeMillis();
