@@ -1,12 +1,15 @@
 package com.cache.spring.controller;
 
 import com.cache.spring.dto.BookDto;
+import com.cache.spring.entity.BookEntity;
 import com.cache.spring.service.BookService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,7 +24,14 @@ public class BookController {
 
     @ApiOperation("책 추가하기")
     @PostMapping("/save")
-    public void saveBook(BookDto bookDto){
+    public String saveBook(BookDto bookDto){
         bookService.saveBook(bookDto);
+        return "성공적으로 책을 추가했습니다 !";
+    }
+
+    @ApiOperation("책 전체 조회하기")
+    @GetMapping("/getAll")
+    public List<BookEntity> getAllBooks(){
+        return bookService.getAllBook();
     }
 }
