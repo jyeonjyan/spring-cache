@@ -12,6 +12,11 @@ import org.springframework.stereotype.Component;
 public class CacheManagerCheck implements CommandLineRunner {
     private final CacheManager cacheManager;
 
+    /**
+     * https://github.com/jojoldu/blog-code/tree/master/spring-cache
+     * @param args
+     * @throws Exception
+     */
     @Override
     public void run(String... args) throws Exception {
         log.info("\n\n" + "=========================================== \n"
