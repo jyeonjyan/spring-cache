@@ -4,7 +4,7 @@
          updateCheck="false">
     <diskStore path="java.io.tmpdir" />
 
-    <cache name="findMemberCache"
+    <cache name="getAllBooksCache"
            maxEntriesLocalHeap="10000"
            maxEntriesLocalDisk="1000"
            eternal="false"
