@@ -19,7 +19,7 @@ public class CacheManagerCheck implements CommandLineRunner {
      */
     @Override
     public void run(String... args) throws Exception {
-        log.info("\n\n" + "=========================================== \n"
+        log.info("\n\n" + "========================================================= \n"
             + "Using cache manager:" + this.cacheManager.getClass().getName() + "\n"
             + "=========================================================\n\n");
     }
