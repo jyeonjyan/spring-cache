@@ -18,6 +18,15 @@ public class BookService {
     }
 
     public List<BookEntity> getAllBook(){
-        return bookRepository.findAll();
+        return bookRepository.findAllByNoCache();
+    }
+
+    public List<BookEntity> getAllBookCache(){
+        return bookRepository.findAllByCache();
+    }
+
+    public String refresh(){
+        bookRepository.refresh();
+        return "clear cache was successful!";
     }
 }
