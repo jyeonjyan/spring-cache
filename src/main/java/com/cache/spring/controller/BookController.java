@@ -5,6 +5,8 @@ import com.cache.spring.entity.BookEntity;
 import com.cache.spring.service.BookService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +15,8 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@EnableCaching
+@Slf4j
 public class BookController {
     private final BookService bookService;
 
@@ -29,9 +33,15 @@ public class BookController {
         return "성공적으로 책을 추가했습니다 !";
     }
 
-    @ApiOperation("책 전체 조회하기")
-    @GetMapping("/getAll")
-    public List<BookEntity> getAllBooks(){
-        return bookService.getAllBook();
+    @ApiOperation("책 전체 조회하기 - cache 없음")
+    @GetMapping("/getAll/{name}")
+    public List<BookEntity> getAllBooks(String name){
+        long start = System.currentTimeMillis();
+        List<BookEntity> allBook = bookService.getAllBook();
+        long end = System.currentTimeMillis();
+
+        log.info(name + "의 noCache 수행시간: "+ (end - start));
+
+        return allBook;
     }
 }
