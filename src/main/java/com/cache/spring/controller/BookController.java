@@ -36,7 +36,7 @@ public class BookController {
 
     @ApiOperation("책 전체 조회하기 - cache 없음")
     @GetMapping("/getAll/nocache/{name}")
-    public List<BookEntity> getAllBooksWithCache(@PathVariable String name){
+    public List<BookEntity> getAllBooks(@PathVariable String name){
         long start = System.currentTimeMillis();
         List<BookEntity> allBook = bookService.getAllBook();
         long end = System.currentTimeMillis();
@@ -44,5 +44,12 @@ public class BookController {
         log.info(name + "의 noCache 수행시간: "+ (end - start));
 
         return allBook;
+    }
+
+
+    @ApiOperation("책 전체 조회하기 - cache 있음")
+    @GetMapping("/getAll/cache/{name}")
+    public List<BookEntity> getAllBooksWithCache(@PathVariable String name){
+
     }
 }
