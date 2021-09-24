@@ -58,4 +58,12 @@ public class BookController {
 
         return allBook;
     }
+
+    @ApiOperation("해당 유저의 cache 리프레시 하기")
+    @GetMapping("/getAll/refresh/{name}")
+    public String refresh(@PathVariable String name){
+        bookService.refresh(name);
+        return name + " cache refresh 성공!";
+    }
+
 }
